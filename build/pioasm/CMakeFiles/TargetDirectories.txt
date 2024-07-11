@@ -1,0 +1,3 @@
+/home/ubiedo/Documentos/adc_dma_pico/build/pioasm/CMakeFiles/pioasm.dir
+/home/ubiedo/Documentos/adc_dma_pico/build/pioasm/CMakeFiles/edit_cache.dir
+/home/ubiedo/Documentos/adc_dma_pico/build/pioasm/CMakeFiles/rebuild_cache.dir
