@@ -1135,7 +1135,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ELF2UF2Build::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ELF2UF2Build-Debug-b9b96d6dd9755f815e04.json",
+					"jsonFile" : "target-ELF2UF2Build-Debug-72eee7913d3d2912bb18.json",
 					"name" : "ELF2UF2Build",
 					"projectIndex" : 0
 				},
@@ -1149,7 +1149,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "adc_dma_pico::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-adc_dma_pico-Debug-2e8010dfe85aa9f716f8.json",
+					"jsonFile" : "target-adc_dma_pico-Debug-4167532812ae73bd9917.json",
 					"name" : "adc_dma_pico",
 					"projectIndex" : 0
 				},

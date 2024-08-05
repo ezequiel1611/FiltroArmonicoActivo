@@ -15,8 +15,9 @@ pico_enable_stdio_usb(adc_dma_pico 1)
 pico_enable_stdio_uart(adc_dma_pico 0)
 
 target_link_libraries(adc_dma_pico
-		pico_stdlib
-		hardware_adc
+	pico_stdlib
+	pico_multicore
+        hardware_adc
         hardware_dma
         hardware_irq
         )

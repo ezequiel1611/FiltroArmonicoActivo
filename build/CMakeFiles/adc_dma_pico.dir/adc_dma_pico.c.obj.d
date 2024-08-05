@@ -55,6 +55,13 @@ CMakeFiles/adc_dma_pico.dir/adc_dma_pico.c.obj: \
  /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/uart.h \
  /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h \
  /home/ubiedo/pico/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h \
+ /home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/include/pico/multicore.h \
+ /home/ubiedo/pico/pico-sdk/src/common/pico_sync/include/pico/sync.h \
+ /home/ubiedo/pico/pico-sdk/src/common/pico_sync/include/pico/sem.h \
+ /home/ubiedo/pico/pico-sdk/src/common/pico_sync/include/pico/lock_core.h \
+ /home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h \
+ /home/ubiedo/pico/pico-sdk/src/common/pico_sync/include/pico/mutex.h \
+ /home/ubiedo/pico/pico-sdk/src/common/pico_sync/include/pico/critical_section.h \
  /home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_adc/include/hardware/adc.h \
  /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/adc.h \
  /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/adc.h \

@@ -1463,6 +1463,30 @@ home/ubiedo/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/adc_dma_pico.dir/build.make CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
 .PHONY : home/ubiedo/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
 
+home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.obj: home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj
+.PHONY : home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.obj
+
+# target to build an object file
+home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/adc_dma_pico.dir/build.make CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj
+.PHONY : home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj
+
+home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.i: home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.i
+.PHONY : home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.i
+
+# target to preprocess a source file
+home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/adc_dma_pico.dir/build.make CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.i
+.PHONY : home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.i
+
+home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.s: home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.s
+.PHONY : home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.s
+
+# target to generate assembly for a file
+home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/adc_dma_pico.dir/build.make CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.s
+.PHONY : home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.s
+
 home/ubiedo/pico/pico-sdk/src/rp2_common/pico_platform/platform.obj: home/ubiedo/pico/pico-sdk/src/rp2_common/pico_platform/platform.c.obj
 .PHONY : home/ubiedo/pico/pico-sdk/src/rp2_common/pico_platform/platform.obj
 
@@ -1907,6 +1931,9 @@ help:
 	@echo "... home/ubiedo/pico/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.i"
 	@echo "... home/ubiedo/pico/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.s"
 	@echo "... home/ubiedo/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.obj"
+	@echo "... home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.obj"
+	@echo "... home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.i"
+	@echo "... home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.s"
 	@echo "... home/ubiedo/pico/pico-sdk/src/rp2_common/pico_platform/platform.obj"
 	@echo "... home/ubiedo/pico/pico-sdk/src/rp2_common/pico_platform/platform.i"
 	@echo "... home/ubiedo/pico/pico-sdk/src/rp2_common/pico_platform/platform.s"

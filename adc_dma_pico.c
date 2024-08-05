@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include "pico/stdlib.h"
+// For Multi-Core
+#include "pico/multicore.h"
 // For ADC input:
 #include "hardware/adc.h"
 #include "hardware/dma.h"
@@ -15,7 +17,7 @@
 uint8_t adc_value;
 uint dma_chan;
 dma_channel_config cfg;
-uint channel_cont = 0;
+uint32_t channel_cont = 0;
 
 void dma_handler() {
     adc_run(false);
@@ -23,14 +25,15 @@ void dma_handler() {
     dma_hw->ints0 = 1u << dma_chan;
     // Vacío la lista FIFO del ADC
     adc_fifo_drain();
-    // muestro la lectura por puerto serie
-    //printf("%-3d\n", adc_value);
     // Envío los datos por el puerto
     for(int i = 0; i < PARALLEL_PORT_LENGTH; i++){
         gpio_put(PARALLEL_PORT_BASE_PIN + i, (adc_value >> i) & 0x01);
     }
-    (channel_cont == 2) ? channel_cont=0 : channel_cont++;
+    // Le digo al otro core que canal lei
     adc_select_input(channel_cont);
+    multicore_fifo_push_blocking(channel_cont);
+    // voy alternando el canal a leer
+    (channel_cont == 2) ? channel_cont=0 : channel_cont++;
     // cambio el estado del clock
     gpio_xor_mask(1u << CLOCK_PIN);
     // Configuro todos los parámetros del canal
@@ -45,13 +48,25 @@ void dma_handler() {
     adc_run(true);
 }
 
+void second_core_code(){
+    uint32_t reading_cont = 0;
+    while(1){
+        reading_cont = multicore_fifo_pop_blocking();
+        if(reading_cont == 0){
+            printf("%-3d\n", adc_value);
+        }
+    }
+}
+
 int main() {
     stdio_init_all();
     sleep_ms(5000);
+    // Inicializo el segundo core
+    multicore_launch_core1(second_core_code);
     ////////////////////////////////////////////////////////////////////////////////////////
     printf("Configurando ADC\n");
     // Inicializo los pines para usarlos como analógicos
-    //adc_gpio_init(26);
+    //adc_gpio_init(26); Test para usar un canal solo
     for (int i=0;i<NUM_CHANNELS;i++){
         adc_gpio_init(26 + i);
     }

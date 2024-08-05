@@ -1024,10 +1024,24 @@ CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/pico_fix/rp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.s"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ubiedo/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c -o CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.s
 
+CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj: CMakeFiles/adc_dma_pico.dir/flags.make
+CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj: /home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c
+CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj: CMakeFiles/adc_dma_pico.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubiedo/Documentos/adc_dma_pico/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj -MF CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj.d -o CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj -c /home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c
+
+CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c > CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.i
+
+CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c -o CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.s
+
 CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj: CMakeFiles/adc_dma_pico.dir/flags.make
 CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj: /home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c
 CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj: CMakeFiles/adc_dma_pico.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubiedo/Documentos/adc_dma_pico/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubiedo/Documentos/adc_dma_pico/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj -MF CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj.d -o CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj -c /home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c
 
 CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.i: cmake_force
@@ -1041,7 +1055,7 @@ CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_ad
 CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj: CMakeFiles/adc_dma_pico.dir/flags.make
 CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj: /home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c
 CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj: CMakeFiles/adc_dma_pico.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubiedo/Documentos/adc_dma_pico/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubiedo/Documentos/adc_dma_pico/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj -MF CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj.d -o CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj -c /home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c
 
 CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c.i: cmake_force
@@ -1123,6 +1137,7 @@ adc_dma_pico_OBJECTS = \
 "CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/lib/tinyusb/src/tusb.c.obj" \
 "CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj" \
 "CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj" \
+"CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj" \
 "CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj" \
 "CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj"
 
@@ -1198,12 +1213,13 @@ adc_dma_pico.elf: CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/lib/tiny
 adc_dma_pico.elf: CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/lib/tinyusb/src/tusb.c.obj
 adc_dma_pico.elf: CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
 adc_dma_pico.elf: CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj
+adc_dma_pico.elf: CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj
 adc_dma_pico.elf: CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj
 adc_dma_pico.elf: CMakeFiles/adc_dma_pico.dir/home/ubiedo/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj
 adc_dma_pico.elf: CMakeFiles/adc_dma_pico.dir/build.make
 adc_dma_pico.elf: pico-sdk/src/rp2_common/boot_stage2/bs2_default_padded_checksummed.S
 adc_dma_pico.elf: CMakeFiles/adc_dma_pico.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubiedo/Documentos/adc_dma_pico/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Linking CXX executable adc_dma_pico.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubiedo/Documentos/adc_dma_pico/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Linking CXX executable adc_dma_pico.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/adc_dma_pico.dir/link.txt --verbose=$(VERBOSE)
 	/usr/bin/arm-none-eabi-objcopy -Oihex /home/ubiedo/Documentos/adc_dma_pico/build/adc_dma_pico.elf adc_dma_pico.hex
 	/usr/bin/arm-none-eabi-objcopy -Obinary /home/ubiedo/Documentos/adc_dma_pico/build/adc_dma_pico.elf adc_dma_pico.bin
