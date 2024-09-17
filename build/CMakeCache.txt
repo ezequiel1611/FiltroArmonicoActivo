@@ -342,8 +342,6 @@ CMAKE_ASM_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_ASM_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_ASM_FLAGS_RELWITHDEBINFO
 CMAKE_ASM_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
-//STRINGS property for variable: CMAKE_BUILD_TYPE
-CMAKE_BUILD_TYPE-STRINGS:INTERNAL=Debug;Release;MinSizeRel;RelWithDebInfo
 //This is the directory where this CMakeCache.txt was created
 CMAKE_CACHEFILE_DIR:INTERNAL=/home/ubiedo/Documentos/adc_dma_pico/build
 //Major version of cmake used to create the current loaded cache
@@ -406,8 +404,6 @@ CMAKE_EXE_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_EXE_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_EXPORT_COMPILE_COMMANDS
-CMAKE_EXPORT_COMPILE_COMMANDS-ADVANCED:INTERNAL=1
 //Name of external makefile project generator.
 CMAKE_EXTRA_GENERATOR:INTERNAL=
 //Name of generator.
@@ -492,7 +488,7 @@ PICO_BOOT_STAGE2_DIR:INTERNAL=/home/ubiedo/pico/pico-sdk/src/rp2_common/boot_sta
 PICO_CMAKE_PRELOAD_PLATFORM_DIR:INTERNAL=/home/ubiedo/pico/pico-sdk/cmake/preload/platforms
 PICO_CMAKE_PRELOAD_PLATFORM_FILE:INTERNAL=/home/ubiedo/pico/pico-sdk/cmake/preload/platforms/rp2040.cmake
 PICO_COMPILER_ASM:INTERNAL=/usr/bin/arm-none-eabi-gcc
-PICO_DOXYGEN_EXCLUDE_PATHS:INTERNAL= /home/ubiedo/pico/pico-sdk/src/rp2_common/cmsis /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_regs /home/ubiedo/pico/pico-sdk/src/rp2_common/cmsis /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_regs /home/ubiedo/pico/pico-sdk/src/rp2_common/cmsis /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_regs /home/ubiedo/pico/pico-sdk/src/rp2_common/cmsis /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_regs /home/ubiedo/pico/pico-sdk/src/rp2_common/cmsis /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_regs /home/ubiedo/pico/pico-sdk/src/rp2_common/cmsis /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_regs /home/ubiedo/pico/pico-sdk/src/rp2_common/cmsis /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_regs /home/ubiedo/pico/pico-sdk/src/rp2_common/cmsis /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_regs /home/ubiedo/pico/pico-sdk/src/rp2_common/cmsis /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_regs /home/ubiedo/pico/pico-sdk/src/rp2_common/cmsis /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_regs
+PICO_DOXYGEN_EXCLUDE_PATHS:INTERNAL= /home/ubiedo/pico/pico-sdk/src/rp2_common/cmsis /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_regs /home/ubiedo/pico/pico-sdk/src/rp2_common/cmsis /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_regs
 PICO_DOXYGEN_PATHS:INTERNAL= /home/ubiedo/pico/pico-sdk/src/common /home/ubiedo/pico/pico-sdk/lib/cyw43-driver/src /home/ubiedo/pico/pico-sdk/src/rp2_common /home/ubiedo/pico/pico-sdk/src/rp2040
 PICO_NO_HARDWARE:INTERNAL=0
 PICO_ON_DEVICE:INTERNAL=1

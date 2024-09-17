@@ -180,10 +180,6 @@
 				{
 					"name" : "HELPSTRING",
 					"value" : "No help, variable specified on the command line."
-				},
-				{
-					"name" : "STRINGS",
-					"value" : "Debug;Release;MinSizeRel;RelWithDebInfo"
 				}
 			],
 			"type" : "STRING",
@@ -657,10 +653,6 @@
 			"name" : "CMAKE_EXPORT_COMPILE_COMMANDS",
 			"properties" : 
 			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
 				{
 					"name" : "HELPSTRING",
 					"value" : "No help, variable specified on the command line."
@@ -1475,7 +1467,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : " /home/ubiedo/pico/pico-sdk/src/rp2_common/cmsis /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_regs /home/ubiedo/pico/pico-sdk/src/rp2_common/cmsis /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_regs /home/ubiedo/pico/pico-sdk/src/rp2_common/cmsis /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_regs /home/ubiedo/pico/pico-sdk/src/rp2_common/cmsis /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_regs /home/ubiedo/pico/pico-sdk/src/rp2_common/cmsis /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_regs /home/ubiedo/pico/pico-sdk/src/rp2_common/cmsis /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_regs /home/ubiedo/pico/pico-sdk/src/rp2_common/cmsis /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_regs /home/ubiedo/pico/pico-sdk/src/rp2_common/cmsis /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_regs /home/ubiedo/pico/pico-sdk/src/rp2_common/cmsis /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_regs /home/ubiedo/pico/pico-sdk/src/rp2_common/cmsis /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_regs"
+			"value" : " /home/ubiedo/pico/pico-sdk/src/rp2_common/cmsis /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_regs /home/ubiedo/pico/pico-sdk/src/rp2_common/cmsis /home/ubiedo/pico/pico-sdk/src/rp2040/hardware_regs"
 		},
 		{
 			"name" : "PICO_DOXYGEN_PATHS",

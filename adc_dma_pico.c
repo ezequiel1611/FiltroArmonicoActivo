@@ -6,13 +6,15 @@
 #include "hardware/adc.h"
 #include "hardware/dma.h"
 #include "hardware/irq.h"
+// For Clock generator:
 #include "hardware/gpio.h"
 
 // Channel 0 is GPIO26
-#define NUM_CHANNELS 3
+#define NUM_CHANNELS 2
 #define PARALLEL_PORT_BASE_PIN 2
 #define PARALLEL_PORT_LENGTH 8
 #define CLOCK_PIN 10
+#define TIMER_NUM 0
 
 uint8_t adc_value;
 uint dma_chan;
@@ -29,13 +31,9 @@ void dma_handler() {
     for(int i = 0; i < PARALLEL_PORT_LENGTH; i++){
         gpio_put(PARALLEL_PORT_BASE_PIN + i, (adc_value >> i) & 0x01);
     }
-    // Le digo al otro core que canal lei
-    adc_select_input(channel_cont);
-    multicore_fifo_push_blocking(channel_cont);
     // voy alternando el canal a leer
-    (channel_cont == 2) ? channel_cont=0 : channel_cont++;
-    // cambio el estado del clock
-    gpio_xor_mask(1u << CLOCK_PIN);
+    (channel_cont == (NUM_CHANNELS - 1)) ? channel_cont=0 : channel_cont++;
+    adc_select_input(channel_cont);
     // Configuro todos los parámetros del canal
     dma_channel_configure(
         dma_chan,       // canal a usar
@@ -49,10 +47,8 @@ void dma_handler() {
 }
 
 void second_core_code(){
-    uint32_t reading_cont = 0;
     while(1){
-        reading_cont = multicore_fifo_pop_blocking();
-        if(reading_cont == 0){
+        if(channel_cont == 0){
             printf("%-3d\n", adc_value);
         }
     }
@@ -61,12 +57,14 @@ void second_core_code(){
 int main() {
     stdio_init_all();
     sleep_ms(5000);
+    ////////////////////////////////////////////////////////////////////////////////////////
     // Inicializo el segundo core
-    multicore_launch_core1(second_core_code);
+    //printf("Inicializando multinucleo\n");
+    //multicore_launch_core1(second_core_code);
     ////////////////////////////////////////////////////////////////////////////////////////
     printf("Configurando ADC\n");
     // Inicializo los pines para usarlos como analógicos
-    //adc_gpio_init(26); Test para usar un canal solo
+    //adc_gpio_init(26); //Test para usar un canal solo
     for (int i=0;i<NUM_CHANNELS;i++){
         adc_gpio_init(26 + i);
     }
@@ -82,10 +80,12 @@ int main() {
         false,   // deshabilito el flag de error.
         true     // convierto cada lectura completa (12 bits), a 8 bits para el DMA
     );
-    // Cada conversión demora (1 + n) ciclos de reloj, el divisor mas pequeño válido
-    // es n = 95, (96 * 1/48MHz) = 2us -> 500Ksps.
-    // Si se coloca un n < 95, se setea la Fs al máximo que es 500Ksps.
-    // Para una Fs de 120Ksps se necesita un n = 399, (400 * 1/48MHz) = 8.33us -> 120Ksps
+    /* 
+    Cada conversión demora (1 + n) ciclos de reloj, el divisor mas pequeño válido
+    es n = 95, (96 * 1/48MHz) = 2us -> 500Ksps.
+    Si se coloca un n < 95, se setea la Fs al máximo que es 500Ksps.
+    Para una Fs de 120Ksps se necesita un n = 399, (400 * 1/48MHz) = 8.33us -> 120Ksps 
+    */
     adc_set_clkdiv(399);
     ///////////////////////////////////////////////////////////////////////////////////////
     printf("Configurando DMA\n");
@@ -131,8 +131,6 @@ int main() {
         gpio_init(PARALLEL_PORT_BASE_PIN + i);
         gpio_set_dir(PARALLEL_PORT_BASE_PIN + i, GPIO_OUT);
     }
-    gpio_init(CLOCK_PIN);
-    gpio_set_dir(CLOCK_PIN, GPIO_OUT);
     ///////////////////////////////////////////////////////////////////////////////////////
     printf("Comenzando Lectura\n");
     adc_run(true);
