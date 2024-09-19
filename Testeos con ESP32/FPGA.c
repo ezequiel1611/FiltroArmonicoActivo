@@ -6,14 +6,16 @@
 #include "freertos/task.h"
 
 #define SAMPLE_RATE 6000 // Frecuencia de muestreo en Hz (6 kHz)
-#define GPIO_OUTPUT_PIN 26 // Pin GPIO de salida (para clock de 6 kHz)
+#define GPIO_OUTPUT_PIN 5 // Nuevo pin GPIO de salida (para clock de 6 kHz)
 #define GPIO_INPUT_MASK ((1ULL << 16) | (1ULL << 17) | (1ULL << 27) | (1ULL << 14) | (1ULL << 12) | (1ULL << 13) | (1ULL << 32) | (1ULL << 33)) // Máscara de los 8 pines de entrada
 
-// Función para generar la señal y actualizar el DAC1
+static bool toggle_signal = false; // Variable para alternar entre las dos señales
+
+// Función para generar la señal y actualizar los DAC1 y DAC2
 void SALIDA(void* arg) {
     // Activar GPIO (Clock de 6 kHz)
     gpio_set_level(GPIO_OUTPUT_PIN, 1);
-    
+
     // Mantener la señal en alto por la mitad del periodo (83.33 us para 6 kHz)
     ets_delay_us(40);  //(1.000.000*1/4*1/SAMPLE_RATE) Uso de ets_delay_us para mayor precisión
 
@@ -28,8 +30,14 @@ void SALIDA(void* arg) {
     data_8bits |= gpio_get_level(12) << 1;
     data_8bits |= gpio_get_level(13);      // Leer el bit menos significativo
 
-    // Enviar el valor leído al DAC1
-    dac_output_voltage(DAC_CHANNEL_1, data_8bits);
+    // Alternar entre las dos señales
+    if (toggle_signal) {
+        dac_output_voltage(DAC_CHANNEL_1, data_8bits);  // Enviar señal al DAC1 (GPIO25)
+    } else {
+        dac_output_voltage(DAC_CHANNEL_2, data_8bits);  // Enviar señal al DAC2 (GPIO26)
+    }
+
+    toggle_signal = !toggle_signal;  // Cambiar la señal para la próxima vez
 
     // Mantener la señal en alto por la mitad del periodo (83.33 us para 6 kHz)
     ets_delay_us(40);  // Uso de ets_delay_us para mayor precisión
@@ -40,8 +48,9 @@ void SALIDA(void* arg) {
 
 // Configurar y comenzar los temporizadores para cada señal
 void app_main(void) {
-    // Inicializar el DAC
+    // Inicializar los DACs
     dac_output_enable(DAC_CHANNEL_1); // DAC1 (GPIO25)
+    dac_output_enable(DAC_CHANNEL_2); // DAC2 (GPIO26)
 
     // Configurar GPIO de salida para el clock
     gpio_config_t io_conf_output = {
