@@ -20,6 +20,7 @@ target_link_libraries(adc_dma_pico
         hardware_adc
         hardware_dma
         hardware_irq
+        hardware_spi
         )
 
 pico_add_extra_outputs(adc_dma_pico)
