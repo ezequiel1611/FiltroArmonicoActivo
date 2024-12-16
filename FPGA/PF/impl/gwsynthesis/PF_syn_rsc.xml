@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module name="top_PF" Lut="2" T_Register="2624(0)" T_Alu="101(0)" T_Lut="1688(2)" T_MULT18X18="6(0)" T_MULTALU36X18="2(0)">
+    <SubModule name="your_instance_name"/>
+    <SubModule name="u_LSCLK" Register="11" Lut="18" T_Register="11(11)" T_Lut="18(18)"/>
+    <SubModule name="u_LSCLK2" Register="9" Lut="18" T_Register="9(9)" T_Lut="18(18)"/>
+    <SubModule name="u_signal_demux" Register="26" Lut="5" T_Register="26(26)" T_Lut="5(5)"/>
+    <SubModule name="u_MAF" Register="1301" Alu="29" Lut="734" MULT18X18="3" T_Register="1301(1301)" T_Alu="29(29)" T_Lut="734(734)" T_MULT18X18="3(3)"/>
+    <SubModule name="u_AF" Register="1253" Alu="72" Lut="812" MULT18X18="3" MULTALU36X18="2" T_Register="1253(1253)" T_Alu="72(72)" T_Lut="812(812)" T_MULT18X18="3(3)" T_MULTALU36X18="2(2)"/>
+    <SubModule name="u_portadora" Register="6" Lut="10" T_Register="6(6)" T_Lut="10(10)"/>
+    <SubModule name="u_spwm" Lut="85" T_Lut="85(85)"/>
+    <SubModule name="u_DT" Register="18" Lut="4" T_Register="18(18)" T_Lut="4(4)"/>
+</Module>

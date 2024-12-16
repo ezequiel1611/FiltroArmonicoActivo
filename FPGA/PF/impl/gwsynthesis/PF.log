@@ -1,0 +1,42 @@
+GowinSynthesis start
+Running parser ...
+Analyzing Verilog file 'C:\Users\PC\Documents\GOWINFPGA\PF\src\AF.v'
+Analyzing Verilog file 'C:\Users\PC\Documents\GOWINFPGA\PF\src\dead_timeV2.v'
+Analyzing Verilog file 'C:\Users\PC\Documents\GOWINFPGA\PF\src\gowin_clkdiv\gowin_clkdiv.v'
+Analyzing Verilog file 'C:\Users\PC\Documents\GOWINFPGA\PF\src\LSCLK.v'
+Analyzing Verilog file 'C:\Users\PC\Documents\GOWINFPGA\PF\src\MAF.v'
+Analyzing Verilog file 'C:\Users\PC\Documents\GOWINFPGA\PF\src\portadora.v'
+Analyzing Verilog file 'C:\Users\PC\Documents\GOWINFPGA\PF\src\signal_demux.v'
+Analyzing Verilog file 'C:\Users\PC\Documents\GOWINFPGA\PF\src\spwm.v'
+Analyzing Verilog file 'C:\Users\PC\Documents\GOWINFPGA\PF\src\top_PF.v'
+Compiling module 'top_PF'("C:\Users\PC\Documents\GOWINFPGA\PF\src\top_PF.v":1)
+Compiling module 'Gowin_CLKDIV'("C:\Users\PC\Documents\GOWINFPGA\PF\src\gowin_clkdiv\gowin_clkdiv.v":10)
+Compiling module 'LSCLK(NB_COUNTER=10,COUNT_LIM=10'b0010110100)'("C:\Users\PC\Documents\GOWINFPGA\PF\src\LSCLK.v":1)
+Compiling module 'LSCLK(NB_COUNTER=10,COUNT_LIM=24)'("C:\Users\PC\Documents\GOWINFPGA\PF\src\LSCLK.v":1)
+Compiling module 'signal_demux'("C:\Users\PC\Documents\GOWINFPGA\PF\src\signal_demux.v":1)
+Compiling module 'MAF(MAF1=100,MAF2=60,NB_COUNTER=7)'("C:\Users\PC\Documents\GOWINFPGA\PF\src\MAF.v":1)
+Compiling module 'AF'("C:\Users\PC\Documents\GOWINFPGA\PF\src\AF.v":1)
+Compiling module 'portadora'("C:\Users\PC\Documents\GOWINFPGA\PF\src\portadora.v":1)
+WARN  (EX3780) : Using initial value of 'data' since it is never assigned("C:\Users\PC\Documents\GOWINFPGA\PF\src\portadora.v":36)
+Compiling module 'spwm'("C:\Users\PC\Documents\GOWINFPGA\PF\src\spwm.v":1)
+Compiling module 'dead_time'("C:\Users\PC\Documents\GOWINFPGA\PF\src\dead_timeV2.v":1)
+NOTE  (EX0101) : Current top module is "top_PF"
+[5%] Running netlist conversion ...
+Running device independent optimization ...
+[10%] Optimizing Phase 0 completed
+[15%] Optimizing Phase 1 completed
+[25%] Optimizing Phase 2 completed
+Running inference ...
+[30%] Inferring Phase 0 completed
+[40%] Inferring Phase 1 completed
+[50%] Inferring Phase 2 completed
+[55%] Inferring Phase 3 completed
+Running technical mapping ...
+[60%] Tech-Mapping Phase 0 completed
+[65%] Tech-Mapping Phase 1 completed
+[75%] Tech-Mapping Phase 2 completed
+[80%] Tech-Mapping Phase 3 completed
+[90%] Tech-Mapping Phase 4 completed
+[95%] Generate netlist file "C:\Users\PC\Documents\GOWINFPGA\PF\impl\gwsynthesis\PF.vg" completed
+[100%] Generate report file "C:\Users\PC\Documents\GOWINFPGA\PF\impl\gwsynthesis\PF_syn.rpt.html" completed
+GowinSynthesis finish

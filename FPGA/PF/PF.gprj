@@ -1,0 +1,20 @@
+<?xml version="1" encoding="UTF-8"?>
+<!DOCTYPE gowin-fpga-project>
+<Project>
+    <Template>FPGA</Template>
+    <Version>5</Version>
+    <Device name="GW1NR-9C" pn="GW1NR-LV9QN88PC6/I5">gw1nr9c-004</Device>
+    <FileList>
+        <File path="src/AF.v" type="file.verilog" enable="1"/>
+        <File path="src/LSCLK.v" type="file.verilog" enable="1"/>
+        <File path="src/MAF.v" type="file.verilog" enable="1"/>
+        <File path="src/dead_timeV2.v" type="file.verilog" enable="1"/>
+        <File path="src/gowin_clkdiv/gowin_clkdiv.v" type="file.verilog" enable="1"/>
+        <File path="src/portadora.v" type="file.verilog" enable="1"/>
+        <File path="src/signal_demux.v" type="file.verilog" enable="1"/>
+        <File path="src/spwm.v" type="file.verilog" enable="1"/>
+        <File path="src/top_PF.v" type="file.verilog" enable="1"/>
+        <File path="src/PF.cst" type="file.cst" enable="1"/>
+        <File path="src/triang30.hex" type="file.other" enable="1"/>
+    </FileList>
+</Project>

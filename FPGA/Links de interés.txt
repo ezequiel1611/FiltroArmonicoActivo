@@ -1,0 +1,9 @@
+Documentación Tang Nano 9k:
+
+https://wiki.sipeed.com/hardware/en/tang/Tang-Nano-9K/Nano-9K.html
+
+Documentación Gowin IDE:
+
+https://wiki.sipeed.com/hardware/en/tang/Tang-Nano-Doc/install-the-ide.html
+
+(no usar WiFi de la facultad; usar datos móviles) -> Si están en la facu

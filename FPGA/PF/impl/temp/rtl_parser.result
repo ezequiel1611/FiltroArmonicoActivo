@@ -1,0 +1,84 @@
+[
+ {
+  "InstFile" : "C:/Users/PC/Documents/GOWINFPGA/PF/src/top_PF.v",
+  "InstLine" : 1,
+  "InstName" : "top_PF",
+  "ModuleFile" : "C:/Users/PC/Documents/GOWINFPGA/PF/src/top_PF.v",
+  "ModuleLine" : 1,
+  "ModuleName" : "top_PF",
+  "SubInsts" : [
+   {
+    "InstFile" : "C:/Users/PC/Documents/GOWINFPGA/PF/src/top_PF.v",
+    "InstLine" : 65,
+    "InstName" : "your_instance_name",
+    "ModuleFile" : "C:/Users/PC/Documents/GOWINFPGA/PF/src/gowin_clkdiv/gowin_clkdiv.v",
+    "ModuleLine" : 10,
+    "ModuleName" : "Gowin_CLKDIV"
+   },
+   {
+    "InstFile" : "C:/Users/PC/Documents/GOWINFPGA/PF/src/top_PF.v",
+    "InstLine" : 78,
+    "InstName" : "u_LSCLK",
+    "ModuleFile" : "C:/Users/PC/Documents/GOWINFPGA/PF/src/LSCLK.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "LSCLK"
+   },
+   {
+    "InstFile" : "C:/Users/PC/Documents/GOWINFPGA/PF/src/top_PF.v",
+    "InstLine" : 90,
+    "InstName" : "u_LSCLK2",
+    "ModuleFile" : "C:/Users/PC/Documents/GOWINFPGA/PF/src/LSCLK.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "LSCLK"
+   },
+   {
+    "InstFile" : "C:/Users/PC/Documents/GOWINFPGA/PF/src/top_PF.v",
+    "InstLine" : 101,
+    "InstName" : "u_signal_demux",
+    "ModuleFile" : "C:/Users/PC/Documents/GOWINFPGA/PF/src/signal_demux.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "signal_demux"
+   },
+   {
+    "InstFile" : "C:/Users/PC/Documents/GOWINFPGA/PF/src/top_PF.v",
+    "InstLine" : 122,
+    "InstName" : "u_MAF",
+    "ModuleFile" : "C:/Users/PC/Documents/GOWINFPGA/PF/src/MAF.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "MAF"
+   },
+   {
+    "InstFile" : "C:/Users/PC/Documents/GOWINFPGA/PF/src/top_PF.v",
+    "InstLine" : 140,
+    "InstName" : "u_AF",
+    "ModuleFile" : "C:/Users/PC/Documents/GOWINFPGA/PF/src/AF.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "AF"
+   },
+   {
+    "InstFile" : "C:/Users/PC/Documents/GOWINFPGA/PF/src/top_PF.v",
+    "InstLine" : 158,
+    "InstName" : "u_portadora",
+    "ModuleFile" : "C:/Users/PC/Documents/GOWINFPGA/PF/src/portadora.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "portadora"
+   },
+   {
+    "InstFile" : "C:/Users/PC/Documents/GOWINFPGA/PF/src/top_PF.v",
+    "InstLine" : 170,
+    "InstName" : "u_spwm",
+    "ModuleFile" : "C:/Users/PC/Documents/GOWINFPGA/PF/src/spwm.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "spwm"
+   },
+   {
+    "InstFile" : "C:/Users/PC/Documents/GOWINFPGA/PF/src/top_PF.v",
+    "InstLine" : 180,
+    "InstName" : "u_DT",
+    "ModuleFile" : "C:/Users/PC/Documents/GOWINFPGA/PF/src/dead_timeV2.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "dead_time"
+   }
+  ]
+ }
+]
