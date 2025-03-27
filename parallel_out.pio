@@ -1,0 +1,8 @@
+.program parallel_out
+
+loop:
+    wait 1 pin 10
+    pull
+    out pins, 8
+    wait 0 pin 10
+    jmp loop

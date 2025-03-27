@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include "pico/stdlib.h"
-// For Multi-Core
-#include "pico/multicore.h"
 // For ADC input:
 #include "hardware/adc.h"
 #include "hardware/dma.h"
@@ -10,14 +8,20 @@
 #include "hardware/gpio.h"
 // For SPI interface:
 #include "hardware/spi.h"
+// For PIO programming
+#include "hardware/pio.h"
+#include "parallel_out.pio.h"
+#include "hardware/clocks.h"
+#include "pico/multicore.h"
 
 // Channel 0 is GPIO26
-#define NUM_CHANNELS 3
+#define NUM_CHANNELS 2
 #define PARALLEL_PORT_BASE_PIN 2    // Puerto paralelo
 #define PARALLEL_PORT_LENGTH 8      // pines de 2 a 9
 #define CLOCK_PIN 10                // Pin de Clock
+#define ENABLE_PIN 11               // Pin para habilitar la comunicación con la FPGA
 #define POTE_BASE 20                // Pin flag fin de adj pote 0 (21 es para pote 1)
-#define NUM_POTES 1                 // cantidad de potes
+#define NUM_POTES 2                 // cantidad de potes
 #define POTE_BASE_EN 12             // Pin EN de adj pote 0 (12 es para pote 1)
 
 // Pines para SPI
@@ -30,13 +34,26 @@
 #define MCP42050_CMD_WRITE_BOTH 0x13 // Comando para los dos potes
 #define MCP42050_INIT_VALUE 0x00
 
+uint8_t adc_ch[2] = {0,0};
+uint8_t channel_send = 0;
 uint8_t adc_value, pote_value = 0;
 uint dma_chan;
 bool flag_agc;
 bool flag_adc = false;
 dma_channel_config cfg;
 uint32_t channel_cont = 0;
-double gain;
+double gain, dn;
+static const float pio_freq = 20000000;
+PIO pio;
+uint state_machine;
+
+void write_fifo_pio() {
+    while(1){
+        if(pio_sm_is_tx_fifo_empty(pio,state_machine) == true){
+            pio_sm_put_blocking(pio, state_machine, adc_ch[0]);
+        }
+    }
+}
 
 void mcp42050_write(uint8_t pot_num, uint8_t value) {
     uint8_t data[2]; // dato a enviar por SPI
@@ -77,15 +94,6 @@ void spi_init_config() {
     gpio_put(PIN_CS, 1);
 }
 
-void send_data(uint gpio, uint32_t events) {
-    adc_run(false);
-    // Envío los datos por el puerto
-    for(int i = 0; i < PARALLEL_PORT_LENGTH; i++){
-        gpio_put(PARALLEL_PORT_BASE_PIN + i, (adc_value >> i) & 0x01);
-    }
-    adc_run(true);
-}
-
 void flag(uint gpio, uint32_t events){
     flag_agc = true;
 }
@@ -96,8 +104,9 @@ void dma_handler() {
     dma_hw->ints0 = 1u << dma_chan;
     // Vacío la lista FIFO del ADC
     adc_fifo_drain();
+    adc_ch[channel_cont] = adc_value;
     // voy alternando el canal a leer
-    (channel_cont == (NUM_CHANNELS - 1)) ? channel_cont=0 : channel_cont++;
+    (channel_cont == (NUM_CHANNELS - 1))? channel_cont=0 : channel_cont++;
     adc_select_input(channel_cont);
     // Configuro todos los parámetros del canal
     dma_channel_configure(
@@ -113,17 +122,11 @@ void dma_handler() {
     adc_run(true);
 }
 
-void second_core_code(){
-    while(1){
-        if(channel_cont == 0 && flag_adc == true){
-            printf("%-3d\n", adc_value);
-            flag_adc = false;
-        }
-    }
-}
-
 int main() {
     stdio_init_all();
+    gpio_init(ENABLE_PIN);
+    gpio_set_dir(ENABLE_PIN, GPIO_OUT);
+    gpio_put(ENABLE_PIN, 1);
     sleep_ms(5000);
     ////////////////////////////////////////////////////////////////////////////////////////
     printf("Configurando ADC\n");
@@ -150,10 +153,9 @@ int main() {
             Si se coloca un n < 95, se setea la Fs al máximo que es 500Ksps.
             Para una Fs de 120Ksps se necesita un n = 399, (400 * 1/48MHz) = 8.33us -> 120Ksps 
     */
-    adc_set_clkdiv(399); // 1199 -> Fs=40KHz
+    adc_set_clkdiv(95); // 799 -> Fs=80Ksps | 1199 -> Fs=40Ksps
     ///////////////////////////////////////////////////////////////////////////////////////
     printf("Configurando DMA\n");
-    sleep_ms(1000);
 
     // Guardo en dma_chan el canal de DMA libre para usarlo luego
     dma_chan = dma_claim_unused_channel(true);
@@ -189,16 +191,6 @@ int main() {
     irq_set_enabled(DMA_IRQ_0, true);
     dma_channel_set_irq0_enabled(dma_chan, true);
     ///////////////////////////////////////////////////////////////////////////////////////
-    printf("Configurando Puerto Paralelo\n");
-    // Configuro los pines GPIO 2-9 como salida
-    for (int i = 0; i < PARALLEL_PORT_LENGTH; i++){
-        gpio_init(PARALLEL_PORT_BASE_PIN + i);
-        gpio_set_dir(PARALLEL_PORT_BASE_PIN + i, GPIO_OUT);
-    }
-    ///////////////////////////////////////////////////////////////////////////////////////
-    printf("Configurando Pin de Interrupción Externa\n");
-    gpio_set_irq_enabled_with_callback(CLOCK_PIN, GPIO_IRQ_EDGE_FALL, true, &send_data);
-    ///////////////////////////////////////////////////////////////////////////////////////
     printf("Configurando la interfaz SPI del MCP42050\n");
     spi_init_config();
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -207,33 +199,83 @@ int main() {
         gpio_init(POTE_BASE_EN + i);
         gpio_set_dir(POTE_BASE_EN + i, GPIO_OUT);
         gpio_put(POTE_BASE_EN + i, 1);
-        gpio_set_irq_enabled_with_callback(POTE_BASE + i, GPIO_IRQ_EDGE_RISE, true, &flag);
+        if(i==0){
+            gpio_set_irq_enabled_with_callback(POTE_BASE + i, GPIO_IRQ_EDGE_RISE, true, &flag);
+        }
+        else{
+            gpio_set_irq_enabled_with_callback(POTE_BASE + i, GPIO_IRQ_EDGE_FALL, true, &flag);
+        }
         pote_value = 0;
         while(flag_agc == false) {
             pote_value++;
             mcp42050_write(i,pote_value);
-            sleep_ms(100);
+            sleep_ms(50);
             printf("Incremento: %d\n",pote_value);
             if(pote_value == 255) {
                 flag_agc = true;
             } 
         }
+        pote_value = pote_value - 1;
+        mcp42050_write(i, pote_value);
         gpio_set_irq_enabled(POTE_BASE + i, GPIO_IRQ_EDGE_RISE, false);
         gpio_put(POTE_BASE_EN + i, 0);
         flag_agc = false;
-        gain = 1 + (pote_value/(256-pote_value));
+        dn = (double)pote_value;
+        gain = 1.00 + (dn/(256.00-dn));
         printf("Ganancia Canal %d: %2.2f\n",i,gain);
+        sleep_ms(500);
     }
-    sleep_ms(5000);
-    ////////////////////////////////////////////////////////////////////////////////////////
-    // Inicializo el segundo core
-    printf("Inicializando multinucleo\n");
-    multicore_launch_core1(second_core_code);
+    sleep_ms(1000);
+    ///////////////////////////////////////////////////////////////////////////////////////
+    printf("Configurando PIO\n");
+    // Determino que voy a usar la PIO0
+    pio = pio0;
+    // Asigno una máquina de estado libre a state_machine
+    state_machine = pio_claim_unused_sm(pio, true);
+    // Cargo el programa en la PIO
+    uint offset = pio_add_program(pio, &parallel_out_program);
+    // Configuro la máquina de estado
+    pio_sm_config c = parallel_out_program_get_default_config(offset);
+    float div = (float)clock_get_hz(clk_sys) / pio_freq;
+    sm_config_set_clkdiv(&c, div);
+    // Configuro los pines para la máquina de estado
+    sm_config_set_out_pins(&c, PARALLEL_PORT_BASE_PIN, PARALLEL_PORT_LENGTH);
+    for(int i = 0; i < PARALLEL_PORT_LENGTH; i++){
+        pio_gpio_init(pio, PARALLEL_PORT_BASE_PIN + i);
+    }
+    pio_sm_set_consecutive_pindirs(pio, state_machine, PARALLEL_PORT_BASE_PIN, 8, true);
+    sm_config_set_sideset_pins(&c, CLOCK_PIN);
+    // Inicializo la máquina de estado
+    pio_sm_init(pio, state_machine, offset, &c);
+    // Habilito la máquina de estado
+    pio_sm_set_enabled(pio, state_machine, true);
+    ///////////////////////////////////////////////////////////////////////////////////////
+    printf("Inicializando 2do Core\n");
+    multicore_launch_core1(write_fifo_pio);
     ///////////////////////////////////////////////////////////////////////////////////////
     printf("Comenzando Lectura\n");
     adc_run(true);
+    gpio_put(ENABLE_PIN, 0);
+    int sample_counter = 0;
     while (true){
-        tight_loop_contents();
+        printf("start\n");
+        busy_wait_ms(1000);
+        do{
+            if(channel_cont == 1 && flag_adc == true){
+                printf("%-3d\n", adc_ch[0]);
+                flag_adc = false;
+                sample_counter++;
+            }
+        } while (sample_counter < 2400);
+        sample_counter = 0;
+        do{
+            if(channel_cont == 0 && flag_adc == true){
+                printf("%-3d\n", adc_ch[1]);
+                flag_adc = false;
+                sample_counter++;
+            }
+        } while (sample_counter < 2400);
+        sample_counter = 0;
     }
 }
 
